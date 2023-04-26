@@ -1,3 +1,7 @@
+## Public URL
+
+Open [https://main.d3vc9s3kbzgfp0.amplifyapp.com](https://main.d3vc9s3kbzgfp0.amplifyapp.com)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
