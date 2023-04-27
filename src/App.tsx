@@ -169,7 +169,7 @@ function App() {
               {photos.map((photo) => (
                 <ImageListItem key={photo.id}>
                   <a
-                    href="#"
+                    href="/#"
                     onClick={() => handleClickPhoto(photo.id)}
                     style={{ display: "block", height: "100%" }}
                   >

@@ -1,0 +1,54 @@
+name: UI Workflow
+
+on:
+  push:
+    branches:
+      - main
+env:
+  REACT_APP_URL: https://d3jmrsdyq8n7xp.cloudfront.net
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout to the repository
+        uses: actions/checkout@v3
+
+      - name: Set up NodeJS environment
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+
+      - name: Install package dependencies
+        run: npm install
+
+      - name: Build app
+        run: npm run build
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: app
+          path: ./build
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: app
+          path: ./build
+
+      - name: Log directory
+        run: ls
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-west-2
+
+      - name: Deploy static site to S3 bucket
+        run: aws s3 sync ./build/ s3://relish-ui --delete
