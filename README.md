@@ -1,6 +1,6 @@
 ## Public URL
 
-Open [https://main.d3vc9s3kbzgfp0.amplifyapp.com](https://main.d3vc9s3kbzgfp0.amplifyapp.com)
+Open [http://relish-ui.s3-website-us-west-2.amazonaws.com](http://relish-ui.s3-website-us-west-2.amazonaws.com)
 
 # Getting Started with Create React App
 
